@@ -43,7 +43,7 @@ describe('Testes na página de login', () => {
       json: () => Promise.resolve(successQuestionMock)
     })))
 
-    const { history } = renderWithRouterAndRedux(<App />)
+    const { history, store } = renderWithRouterAndRedux(<App />)
 
     const NAME_INPUT = screen.getByTestId("input-player-name");
     const EMAIL_INPUT = screen.getByTestId("input-gravatar-email");
@@ -57,6 +57,9 @@ describe('Testes na página de login', () => {
     await waitFor(() => {
       expect(history.location.pathname).toBe('/game')
     });
+
+    expect(store.getState().player.score).toEqual(0);
+    expect(store.getState().player.assertions).toEqual(0);
 
     expect(global.fetch).toHaveBeenCalled();
     expect(global.fetch).toBeCalledWith('https://opentdb.com/api_token.php?command=request')
@@ -87,6 +90,11 @@ describe('Testes na página de login', () => {
 
       userEvent.click(screen.getByTestId('btn-next'));
     })
+
+    expect(store.getState().player.score).toEqual(320);
+    expect(store.getState().player.assertions).toEqual(5);
+
+    expect(screen.getAllByText('320')[0]).toBeInTheDocument();
 
     await waitFor(() => {
       expect(history.location.pathname).toBe('/feedback')
