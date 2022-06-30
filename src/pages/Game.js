@@ -13,7 +13,6 @@ class Game extends Component {
     index: 0,
     answered: false,
     timer: 30,
-    nextButtonDisabled: true,
   }
 
   async componentDidMount() {
@@ -37,13 +36,18 @@ class Game extends Component {
   }
 
   componentDidUpdate() {
-    const { timer, nextButtonDisabled, intervalId } = this.state;
+    const { timer, answered, intervalId } = this.state;
 
     if (timer === 0) clearInterval(intervalId);
 
-    if (timer === 0 && nextButtonDisabled) {
-      this.setState({ nextButtonDisabled: false });
+    if (timer === 0 && !answered) {
+      this.setState({ answered: true });
     }
+  }
+
+  componentWillUnmount() {
+    const { intervalId } = this.state;
+    clearInterval(intervalId);
   }
 
   timerCounter = () => {
@@ -63,18 +67,21 @@ class Game extends Component {
 
   increment = () => {
     const maxLength = 4;
+
     const {
       history,
       player,
     } = this.props;
+
     const { intervalId, index } = this.state;
+
     clearInterval(intervalId);
+
     this.setState((prevState) => ({
       ...prevState,
       index: prevState.index < maxLength ? prevState.index + 1 : 0,
       answered: false,
       timer: 30,
-      nextButtonDisabled: true,
     }), () => this.timerCounter());
 
     if (index === maxLength) {
@@ -97,14 +104,13 @@ class Game extends Component {
   handleAnswerClick = ({ points, assertions }) => {
     this.setState({
       answered: true,
-      nextButtonDisabled: false,
     });
 
     this.setPoints(points, assertions);
   }
 
   render() {
-    const { index, questions, answered, timer, nextButtonDisabled } = this.state;
+    const { index, questions, answered, timer } = this.state;
 
     return (
       <>
@@ -115,7 +121,7 @@ class Game extends Component {
               question={ questions[index] }
               answered={ answered }
               handleClick={ this.handleAnswerClick }
-              isDisabled={ !nextButtonDisabled }
+              isDisabled={ answered }
               timer={ timer }
             />
           )}
