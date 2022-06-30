@@ -11,7 +11,7 @@ describe('Testes na página de login', () => {
   beforeEach(cleanup);
 
   it('01. Verifica se as informações do usuário estão corretamente no Header da página game', async () => {
-     const { history } = renderWithRouterAndRedux(<App />);
+    const { history } = renderWithRouterAndRedux(<App />);
 
     const NAME_INPUT = screen.getByTestId("input-player-name");
     const EMAIL_INPUT = screen.getByTestId("input-gravatar-email");
