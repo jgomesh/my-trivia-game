@@ -6,6 +6,7 @@ import sortQuestions from '../utils/sortQuestions';
 import Question from '../components/Question';
 import Header from '../components/Header';
 import { sendUserGameInfo } from '../redux/actions/actions';
+import clearTimer from '../utils/clearTimer';
 
 class Game extends Component {
   state = {
@@ -35,34 +36,24 @@ class Game extends Component {
     this.timerCounter();
   }
 
-  componentDidUpdate() {
-    const { timer, answered, intervalId } = this.state;
-
-    if (timer === 0) clearInterval(intervalId);
-
-    if (timer === 0 && !answered) {
-      this.setState({ answered: true });
-    }
-  }
-
   componentWillUnmount() {
     const { intervalId } = this.state;
-    clearInterval(intervalId);
+    clearTimer.clearTimer(intervalId);
   }
 
   timerCounter = () => {
-    const { timer } = this.state;
     const delayInMiliseconds = 1000;
 
-    if (timer > 0) {
-      const intervalId = setInterval(() => {
-        this.setState((prevState) => ({
-          ...prevState,
-          timer: prevState.timer - 1,
-          intervalId,
-        }));
-      }, delayInMiliseconds);
-    }
+    const intervalId = setInterval(() => {
+      const { timer } = this.state;
+      if (timer === 0) return clearTimer.clearTimer(intervalId);
+
+      this.setState((prevState) => ({
+        ...prevState,
+        timer: prevState.timer - 1,
+        intervalId,
+      }));
+    }, delayInMiliseconds);
   }
 
   increment = () => {
@@ -75,11 +66,11 @@ class Game extends Component {
 
     const { intervalId, index } = this.state;
 
-    clearInterval(intervalId);
+    clearTimer.clearTimer(intervalId);
 
     this.setState((prevState) => ({
       ...prevState,
-      index: prevState.index < maxLength ? prevState.index + 1 : 0,
+      index: prevState.index < maxLength && prevState.index + 1,
       answered: false,
       timer: 30,
     }), () => this.timerCounter());
@@ -121,7 +112,7 @@ class Game extends Component {
               question={ questions[index] }
               answered={ answered }
               handleClick={ this.handleAnswerClick }
-              isDisabled={ answered }
+              isDisabled={ !timer || answered }
               timer={ timer }
             />
           )}
