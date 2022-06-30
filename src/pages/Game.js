@@ -6,6 +6,7 @@ import sortQuestions from '../utils/sortQuestions';
 import Question from '../components/Question';
 import Header from '../components/Header';
 import { sendUserGameInfo } from '../redux/actions/actions';
+import clearTimer from '../utils/clearTimer';
 
 class Game extends Component {
   state = {
@@ -13,7 +14,6 @@ class Game extends Component {
     index: 0,
     answered: false,
     timer: 30,
-    nextButtonDisabled: true,
   }
 
   async componentDidMount() {
@@ -36,45 +36,43 @@ class Game extends Component {
     this.timerCounter();
   }
 
-  componentDidUpdate() {
-    const { timer, nextButtonDisabled, intervalId } = this.state;
-
-    if (timer === 0) clearInterval(intervalId);
-
-    if (timer === 0 && nextButtonDisabled) {
-      this.setState({ nextButtonDisabled: false });
-    }
+  componentWillUnmount() {
+    const { intervalId } = this.state;
+    clearTimer.clearTimer(intervalId);
   }
 
   timerCounter = () => {
-    const { timer } = this.state;
     const delayInMiliseconds = 1000;
 
-    if (timer > 0) {
-      const intervalId = setInterval(() => {
-        this.setState((prevState) => ({
-          ...prevState,
-          timer: prevState.timer - 1,
-          intervalId,
-        }));
-      }, delayInMiliseconds);
-    }
+    const intervalId = setInterval(() => {
+      const { timer } = this.state;
+      if (timer === 0) return clearTimer.clearTimer(intervalId);
+
+      this.setState((prevState) => ({
+        ...prevState,
+        timer: prevState.timer - 1,
+        intervalId,
+      }));
+    }, delayInMiliseconds);
   }
 
   increment = () => {
     const maxLength = 4;
+
     const {
       history,
       player,
     } = this.props;
+
     const { intervalId, index } = this.state;
-    clearInterval(intervalId);
+
+    clearTimer.clearTimer(intervalId);
+
     this.setState((prevState) => ({
       ...prevState,
-      index: prevState.index < maxLength ? prevState.index + 1 : 0,
+      index: prevState.index < maxLength && prevState.index + 1,
       answered: false,
       timer: 30,
-      nextButtonDisabled: true,
     }), () => this.timerCounter());
 
     if (index === maxLength) {
@@ -97,14 +95,13 @@ class Game extends Component {
   handleAnswerClick = ({ points, assertions }) => {
     this.setState({
       answered: true,
-      nextButtonDisabled: false,
     });
 
     this.setPoints(points, assertions);
   }
 
   render() {
-    const { index, questions, answered, timer, nextButtonDisabled } = this.state;
+    const { index, questions, answered, timer } = this.state;
 
     return (
       <>
@@ -115,7 +112,7 @@ class Game extends Component {
               question={ questions[index] }
               answered={ answered }
               handleClick={ this.handleAnswerClick }
-              isDisabled={ !nextButtonDisabled }
+              isDisabled={ !timer || answered }
               timer={ timer }
             />
           )}

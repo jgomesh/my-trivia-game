@@ -15,7 +15,7 @@ describe('Testa a página de feedback', () => {
       gravatarEmail: 'trybe@teste.com',
     }
 
-    const { history } = renderWithRouterAndRedux(<App />, {player: INITIAL_STATE});
+    const { history } = renderWithRouterAndRedux(<App />, { player: INITIAL_STATE });
     history.push('/feedback');
 
     expect(history.location.pathname).toBe('/feedback');
