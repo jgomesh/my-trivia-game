@@ -4,7 +4,6 @@ import { cleanup, screen } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
 import md5 from 'crypto-js/md5';
 import App from "../App";
-import { successQuestionMock } from './mocks/questions';
 
 describe('Testa a página de feedback', () => {
   beforeEach(cleanup)
