@@ -7,6 +7,9 @@ import Question from '../../components/Question';
 import Header from '../../components/Header';
 import { sendUserGameInfo } from '../../redux/actions/actions';
 import clearTimer from '../../utils/clearTimer';
+import clock from '../../assets/images/clock.svg';
+import clockDanger from '../../assets/images/clock-danger.svg';
+import './Game.scss';
 
 class Game extends Component {
   state = {
@@ -46,7 +49,10 @@ class Game extends Component {
 
     const intervalId = setInterval(() => {
       const { timer } = this.state;
-      if (timer === 0) return clearTimer.clearTimer(intervalId);
+      if (timer === 0) {
+        this.setState({ answered: true });
+        return clearTimer.clearTimer(intervalId);
+      }
 
       this.setState((prevState) => ({
         ...prevState,
@@ -102,11 +108,13 @@ class Game extends Component {
 
   render() {
     const { index, questions, answered, timer } = this.state;
+    const dangerTime = 10;
 
     return (
-      <>
+      <div className="game__container">
         <Header />
-        <main>
+
+        <main className="game__container__question__container">
           { !!questions.length && (
             <Question
               question={ questions[index] }
@@ -116,7 +124,12 @@ class Game extends Component {
               timer={ timer }
             />
           )}
-          <h1>{timer}</h1>
+
+          <div className="game__container__timer__container">
+            <img src={ timer <= dangerTime ? clockDanger : clock } alt="clock icon" />
+            <h1 className={ timer <= dangerTime && 'danger' }>{timer}</h1>
+          </div>
+
           {
             answered && (
               <button
@@ -129,7 +142,7 @@ class Game extends Component {
             )
           }
         </main>
-      </>
+      </div>
     );
   }
 }
