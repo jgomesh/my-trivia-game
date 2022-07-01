@@ -7,12 +7,12 @@
   align-items: center;
   justify-content: center;
   background-image: url("../../assets/images/Codigos\ \(1\).svg");
+  background-size: cover;
   
 
   &__form {
     @include displayColumn;
     align-items: center;
-    justify-content: center;
     background: linear-gradient(
       225.05deg,
       rgba(250, 87, 112, 0.0954) 46.26%,
@@ -21,6 +21,7 @@
     border-radius: 20px;
     width: 450px;
     height: 37.3rem;
+    
     // margin: 2rem;
 
     &__logo {
@@ -28,9 +29,44 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-position-x: 1.5rem;
-      background-position-y: -1.3rem;
+      // background-position-y: -1.3rem;
+      margin-top: 50px;
       width: 90%;
       height: 286px;
     }
+
+    &__input{
+      margin-bottom: 20px;
+      padding: 2px 5px;
+      width: 276px;
+      height: 40px;
+    }
+
+    &__btn{
+      margin-top: 15px;
+      padding: 2px 5px;
+      width: 250px;
+      height: 55px;
+      background: $gradient-01;
+      border: none;
+      border-radius: 5px;
+      color: $white-dark;
+      @include headings(24px, 600, 130%);
+      box-shadow: (0px 6px 6px rgba(0, 0, 0, 0.25));
+      transition: all .5s;
+    }
+
+    &__btn:hover {
+      transition: all .5s;
+      background: linear-gradient(243.46deg, #fc7185 16.66%, #e24d63 83.34%);
+      // background: lighten($red-200, 0.5);
+      box-shadow: (3px 3px 3px #f5a1ae49);
+      border-radius: 4px;
+      cursor: pointer;
+    }
   }
+}
+
+#settings_btn{
+  display: none;
 }
