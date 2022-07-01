@@ -8,6 +8,7 @@
   justify-content: center;
   background-image: url("../../assets/images/Codigos\ \(1\).svg");
   background-size: cover;
+  animation: codeMoveDown 45s infinite;
   
 
   &__form {
@@ -69,4 +70,9 @@
 
 #settings_btn{
   display: none;
+}
+
+@keyframes codeMoveDown {
+  from {background-position-y: 0px;}
+  to {background-position-y: 5500px;}
 }
