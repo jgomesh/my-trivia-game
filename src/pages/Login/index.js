@@ -41,37 +41,39 @@ class Login extends React.Component {
       <main className="login__container">
         <form className="login__container__form">
           <div className="login__container__form__logo" />
-          <label htmlFor="name">
-            <input
-              placeholder="Enter your name..."
-              type="text"
-              data-testid="input-player-name"
-              value={ name }
-              name="name"
-              id="name"
-              onChange={ this.handleChange }
-            />
-          </label>
-          <label htmlFor="gravatarEmail">
-            <input
-              type="email"
-              name="gravatarEmail"
-              id="gravatarEmail"
-              placeholder="Enter your e-mail..."
-              value={ gravatarEmail }
-              onChange={ this.handleChange }
-              data-testid="input-gravatar-email"
-            />
-          </label>
+          <input
+            className="login__container__form__input"
+            placeholder="Enter your name..."
+            type="text"
+            data-testid="input-player-name"
+            value={ name }
+            name="name"
+            id="name"
+            onChange={ this.handleChange }
+          />
+
+          <input
+            className="login__container__form__input"
+            type="email"
+            name="gravatarEmail"
+            id="gravatarEmail"
+            placeholder="Enter your e-mail..."
+            value={ gravatarEmail }
+            onChange={ this.handleChange }
+            data-testid="input-gravatar-email"
+          />
+
           <button
+            className="login__container__form__btn"
             type="button"
             data-testid="btn-play"
             onClick={ this.handleUserLogin }
             disabled={ !this.isFormValid() }
           >
-            Play
+            PLAY
           </button>
           <button
+            id="settings_btn"
             type="button"
             data-testid="btn-settings"
             onClick={ this.goToSettings }
