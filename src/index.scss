@@ -1,5 +1,8 @@
 @import "./styles/variables.scss";
 *{
-    font-family: $font-Sora;
-    
+  font-family: $font-Sora;  
+}
+
+body {
+  background-color: $background-main;
 }
