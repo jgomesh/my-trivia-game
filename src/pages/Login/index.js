@@ -39,7 +39,7 @@ class Login extends React.Component {
     const { name, gravatarEmail } = this.state;
     return (
       <main className="login__container">
-        <form className="login__container__form">
+        <form className="login__container__form" autoComplete="off">
           <div className="login__container__form__logo" />
           <input
             className="login__container__form__input"
