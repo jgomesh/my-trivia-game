@@ -10,6 +10,7 @@ $red-600: #991226;
 
 $white-dark: #f5f0f1;
 $black-dark: #121111;
+$background-main: #1E1E1E;
 
 $gray-1: #141414;
 $gray-2: #2c2c2c;
@@ -18,6 +19,7 @@ $gray-4: #5c5c5c;
 $gray-5: #747474;
 $gray-6: #8c8c8c;
 $gray-7: #a3a3a3;
+
 
 $gradient-01: linear-gradient(243.46deg, #fa5770 16.66%, #e83752 83.34%);
 $gradient-02: linear-gradient(225.05deg, #fa5770 0%, rgba(232, 55, 82, 0) 100%);
@@ -32,4 +34,9 @@ $font-Sora: "Sora", sans-serif;
   font-size: $size;
   font-weight: $weight;
   line-height: $line_height;
+}
+
+@mixin displayColumn {
+  display: flex;
+  flex-direction: column;
 }
