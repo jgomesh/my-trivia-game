@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../../assets/images/Codigos\ \(1\).svg");
+  background-image: url("../../assets/images/codes.svg");
   background-size: cover;
   animation: codeMoveDown 45s infinite;
   
@@ -22,15 +22,12 @@
     border-radius: 20px;
     width: 450px;
     height: 37.3rem;
-    
-    // margin: 2rem;
 
     &__logo {
-      background-image: url("../../assets/images/Neon_Trivia.svg");
+      background-image: url("../../assets/images/trivia-neon.svg");
       background-repeat: no-repeat;
       background-size: contain;
       background-position-x: 1.5rem;
-      // background-position-y: -1.3rem;
       margin-top: 50px;
       width: 90%;
       height: 286px;
@@ -44,6 +41,11 @@
       width: 276px;
       height: 40px;
       transition: 0.2s ease-in-out;
+
+      &::placeholder {
+        padding-left: 10px;
+        font-size: 16px;
+      }
 
       &:focus {
         outline: 3.5px solid $red-200;
