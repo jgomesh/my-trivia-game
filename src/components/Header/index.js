@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
 import { connect } from 'react-redux';
+import './Header.scss';
 
 class Header extends Component {
   render() {
@@ -11,14 +12,21 @@ class Header extends Component {
     const userEmailToHash = md5(gravatarEmail).toString();
 
     return (
-      <header>
-        <img
-          data-testid="header-profile-picture"
-          alt="profile"
-          src={ `${gravatarBaseUrl}${userEmailToHash}` }
-        />
-        <span data-testid="header-player-name">{ name }</span>
-        <span data-testid="header-score">{ score }</span>
+      <header className="header__container">
+        <aside className="header__container__aside">
+          <img
+            data-testid="header-profile-picture"
+            alt="profile"
+            src={ `${gravatarBaseUrl}${userEmailToHash}` }
+          />
+          <div className="header__container__aside__playerName">
+            <span data-testid="header-player-name">{ name }</span>
+          </div>
+          <div className="header__container__aside__playerScore">
+            <p>Player score:</p>
+            <span data-testid="header-score">{ score }</span>
+          </div>
+        </aside>
       </header>
     );
   }
