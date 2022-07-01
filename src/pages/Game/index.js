@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import fetchGameQuestions from '../services/fetchGameQuestions';
-import sortQuestions from '../utils/sortQuestions';
-import Question from '../components/Question';
-import Header from '../components/Header';
-import { sendUserGameInfo } from '../redux/actions/actions';
-import clearTimer from '../utils/clearTimer';
+import fetchGameQuestions from '../../services/fetchGameQuestions';
+import sortQuestions from '../../utils/sortQuestions';
+import Question from '../../components/Question';
+import Header from '../../components/Header';
+import { sendUserGameInfo } from '../../redux/actions/actions';
+import clearTimer from '../../utils/clearTimer';
 
 class Game extends Component {
   state = {

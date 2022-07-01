@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './styles/Question.css';
+import './Question.scss';
 
 class Question extends Component {
   toggleQuestionClass = (answered, question, answer) => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import fetchToken from '../services/fetchToken';
-import isEmailValid from '../utils/isEmailValid';
-import { sendUserInfo, resetPoints } from '../redux/actions/actions';
+import fetchToken from '../../services/fetchToken';
+import isEmailValid from '../../utils/isEmailValid';
+import { sendUserInfo, resetPoints } from '../../redux/actions/actions';
 
 class Login extends React.Component {
   state = {
