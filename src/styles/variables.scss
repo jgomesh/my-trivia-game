@@ -1,0 +1,35 @@
+$red: #e83752;
+$red-dark: #d4203b;
+$red-light: #fa5770;
+$red-100: #f5a1ae;
+$red-200: #f18a9a;
+$red-300: #e75e72;
+$red-400: #e83752;
+$red-500: #b71930;
+$red-600: #991226;
+
+$white-dark: #f5f0f1;
+$black-dark: #121111;
+
+$gray-1: #141414;
+$gray-2: #2c2c2c;
+$gray-3: #444444;
+$gray-4: #5c5c5c;
+$gray-5: #747474;
+$gray-6: #8c8c8c;
+$gray-7: #a3a3a3;
+
+$gradient-01: linear-gradient(243.46deg, #fa5770 16.66%, #e83752 83.34%);
+$gradient-02: linear-gradient(225.05deg, #fa5770 0%, rgba(232, 55, 82, 0) 100%);
+
+$red-btn: #eb3d3d;
+$green-btn: #32d957;
+$yellow-btn: #ffce52;
+
+$font-Sora: "Sora", sans-serif;
+
+@mixin headings($size, $weight, $line_height) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line_height;
+}

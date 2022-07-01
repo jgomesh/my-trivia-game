@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import fetchToken from '../../services/fetchToken';
 import isEmailValid from '../../utils/isEmailValid';
 import { sendUserInfo, resetPoints } from '../../redux/actions/actions';
+import './Login.scss';
 
 class Login extends React.Component {
   state = {

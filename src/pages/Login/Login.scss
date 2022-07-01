@@ -1,0 +1,5 @@
+@import "../../styles/variables.scss";
+
+label{
+    @include headings(96px, 600, 100%);
+}
