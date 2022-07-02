@@ -9,16 +9,13 @@
   background-image: url("../../assets/images/codes.svg");
   background-size: cover;
   animation: codeMoveDown 45s infinite;
-  
 
   &__form {
     @include displayColumn;
     align-items: center;
-    background: linear-gradient(
-      225.05deg,
-      rgba(250, 87, 112, 0.0954) 46.26%,
-      rgba(232, 55, 82, 0) 146.26%
-    );
+    background: linear-gradient(225.05deg,
+        rgba(250, 87, 112, 0.0954) 46.26%,
+        rgba(232, 55, 82, 0) 146.26%);
     border-radius: 20px;
     width: 450px;
     height: 37.3rem;
@@ -40,10 +37,11 @@
       border-style: none;
       width: 276px;
       height: 40px;
+      font-size: 16px;
       transition: 0.2s ease-in-out;
+      padding-left: 10px;
 
       &::placeholder {
-        padding-left: 10px;
         font-size: 16px;
       }
 
@@ -53,7 +51,7 @@
       }
     }
 
-    &__btn{
+    &__btn {
       margin-top: 15px;
       padding: 2px 5px;
       width: 250px;
@@ -72,6 +70,8 @@
       border-radius: 4px;
       transform: scale(1.05);
       cursor: pointer;
+      background: $gradient-01;
+      color: white;
     }
 
     &__btn:disabled {
@@ -81,11 +81,16 @@
   }
 }
 
-#settings_btn{
+#settings_btn {
   display: none;
 }
 
 @keyframes codeMoveDown {
-  from {background-position-y: 0px;}
-  to {background-position-y: 5500px;}
+  from {
+    background-position-y: 0px;
+  }
+
+  to {
+    background-position-y: 5500px;
+  }
 }
