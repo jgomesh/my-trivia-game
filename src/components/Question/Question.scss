@@ -1,9 +1,63 @@
-.wrong {
-  background: red;
-  border: 3px solid red;
+@import '../../styles/variables.scss';
+
+.question__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-weight: 600;
+  }
+
+  &__category {
+    font-size: 24px;
+  }
+
+  &__questionText {
+    font-size: 30px;
+    max-width: 80%;
+    text-align: center;
+  }
 }
 
-.correct {
-  background: rgb(6, 240, 15);
-  border: 3px solid rgb(6, 240, 15);
+.question__container__buttons__container {
+  display: flex;
+  max-width: 713px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  gap: 53px;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    width: 280px;
+    height: 48px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+
+    &:hover:enabled {
+      background: #fff;
+      color: $black-dark;
+    }
+
+    &.wrong {
+      background: $red-btn;
+      color: white;
+      border-style: none;
+    }
+
+    &.correct {
+      background: $green-btn;
+      color: white;
+      border-style: none;
+    }
+  }
 }

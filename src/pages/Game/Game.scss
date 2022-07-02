@@ -15,16 +15,39 @@
     width: 100%;
     height: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 
   &__timer__container {
     display: flex;
     gap: 15px;
+    margin-top: 50px;
+
+    h1 {
+      font-size: 60px;
+    }
 
     .danger {
       color: $red-btn;
+    }
+  }
+
+  &__nextAnswerButton {
+    width: 280px;
+    height: 48px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+
+    &:hover:enabled {
+      background: #fff;
+      color: $black-dark;
     }
   }
 }
