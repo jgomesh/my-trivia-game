@@ -22,10 +22,10 @@ describe('Testa a página de Ranking', () => {
 
     localStorageMock.forEach((user) => {
       expect(screen.getByText(user.name)).toBeInTheDocument();
-      expect(screen.getByText(user.score)).toBeInTheDocument();
+      expect(screen.getByText(`Score: ${user.score}`)).toBeInTheDocument();
     })
 
-    const BUTTON_LOGIN = screen.getByRole('button', {name: /home/i});
+    const BUTTON_LOGIN = screen.getByRole('button', {name: /play again/i});
     expect(BUTTON_LOGIN).toBeInTheDocument();
 
     userEvent.click(BUTTON_LOGIN);
