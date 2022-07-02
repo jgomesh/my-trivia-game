@@ -24,7 +24,7 @@
       }
 
       img {
-        animation: neonBlink 1.5s infinite;
+        animation: neonBlink 3s infinite;
       }
     }
     
@@ -44,23 +44,10 @@
 }
 
 @keyframes neonBlink {
-  0% {
+  0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
     opacity: 0.6;
   }
-
-  25% {
+  18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
     opacity: 1;
-  }
-
-  50% {
-    opacity: 0.6;
-  }
-
-  75% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.6;
   }
 }
