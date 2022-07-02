@@ -24,7 +24,7 @@ export const successQuestionMock = {
       type: "multiple",
       difficulty: "easy",
       question:
-        "In &quot;Jurassic World&quot;, what is the name of the dinosaur that is a genetic hybrid?",
+        'In "Jurassic World", what is the name of the dinosaur that is a genetic hybrid?',
       correct_answer: "Indominus Rex",
       incorrect_answers: ["Mosasaurus", "Pteranodon", "Tyrannosaurus Rex"],
     },
@@ -33,7 +33,7 @@ export const successQuestionMock = {
       type: "boolean",
       difficulty: "easy",
       question:
-        "The Python programming language gets its name from the British comedy group &quot;Monty Python.&quot;",
+        'The Python programming language gets its name from the British comedy group "Monty Python."',
       correct_answer: "True",
       incorrect_answers: ["False"],
     },
@@ -42,7 +42,7 @@ export const successQuestionMock = {
       type: "multiple",
       difficulty: "hard",
       question:
-        "What year did Dire Straits&#039;s Song &quot;Money for Nothing&quot; release?",
+        "What year did Dire Straits's Song" + " Money for Nothing" + " release?",
       correct_answer: "1985",
       incorrect_answers: ["1973", "1980", "1991"],
     },

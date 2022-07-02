@@ -28,8 +28,8 @@ describe('Testa a página de feedback', () => {
 
     expect(screen.getByText(/joão otávio/i)).toBeInTheDocument();
 
-    expect(screen.getAllByText('0')).toHaveLength(2);
-    expect(screen.getByText('2')).toBeInTheDocument();
+    expect(screen.getAllByText('0')).toHaveLength(1);
+    expect(screen.getByText('Right answers: 2')).toBeInTheDocument();
 
     const BUTTON_PLAY_AGAIN = screen.getByRole('button', {name: /Play again/i});
     const BUTTON_RANKING = screen.getByRole('button', {name: /ranking/i});

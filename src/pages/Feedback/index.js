@@ -58,13 +58,13 @@ class Feedback extends Component {
             <Button
               type="button"
               title="Play Again"
-              data-testid="btn-play-again"
+              testId="btn-play-again"
               onClick={ () => this.redirect('/') }
             />
             <Button
               type="button"
               title="Ranking"
-              data-testid="btn-ranking"
+              testId="btn-ranking"
               onClick={ () => this.redirect('/ranking') }
             />
           </div>

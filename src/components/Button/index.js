@@ -9,6 +9,7 @@ class Button extends Component {
       onClick,
       className,
       disabled,
+      testId,
     } = this.props;
     return (
       <button
@@ -16,6 +17,7 @@ class Button extends Component {
         onClick={ onClick }
         className={ className }
         disabled={ disabled }
+        data-testid={ testId }
       >
         { title }
       </button>
@@ -30,10 +32,12 @@ Button.propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  testId: PropTypes.string,
 };
 
 Button.defaultProps = {
   onClick: () => {},
   className: '',
   disabled: false,
+  testId: '',
 };
