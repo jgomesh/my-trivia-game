@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Button from '../Button';
 import './Question.scss';
 
 class Question extends Component {
@@ -14,6 +15,14 @@ class Question extends Component {
     }
 
     return 'correct';
+  }
+
+  toggleTestId = (question, answer, index) => {
+    if (question.incorrect_answers.includes(answer)) {
+      return `wrong-answer-${index}`;
+    }
+
+    return 'correct-answer';
   }
 
   calculatePoints = (answer, question) => {
@@ -51,35 +60,49 @@ class Question extends Component {
     return { points, assertions };
   }
 
+  createMarkup(question) {
+    const p = document.createElement('textarea');
+    p.innerHTML = question;
+    return p.value;
+  }
+
   render() {
     const { question, answered, handleClick, isDisabled } = this.props;
 
     const answers = question.sortedAnswers;
 
     return (
-      <div className="question-div">
-        <div data-testid="question-category">{question.category}</div>
-        <div data-testid="question-text">{question.question}</div>
-        <div className="buttons-container" data-testid="answer-options">
+      <div className="question__container">
+
+        <p className="question__container__category" data-testid="question-category">
+          {question.category}
+        </p>
+
+        <p
+          data-testid="question-text"
+          className="question__container__questionText"
+        >
+          { this.createMarkup(question.question) }
+        </p>
+
+        <div
+          className="question__container__buttons__container"
+          data-testid="answer-options"
+        >
           {answers.map((answer, index) => (
-            <button
-              type="button"
+            <Button
               key={ answer }
+              title={ this.createMarkup(answer) }
               disabled={ isDisabled }
-              data-testid={
-                question.incorrect_answers.includes(answer)
-                  ? `wrong-answer-${index}`
-                  : 'correct-answer'
-              }
+              data-testid={ this.toggleTestId(question, answer, index) }
               className={
                 this.toggleQuestionClass(answered, question.incorrect_answers, answer)
               }
               onClick={ () => handleClick(this.calculateScore(answer, question)) }
-            >
-              {answer}
-            </button>
+            />
           ))}
         </div>
+
       </div>
     );
   }

@@ -5,6 +5,7 @@ import fetchGameQuestions from '../../services/fetchGameQuestions';
 import sortQuestions from '../../utils/sortQuestions';
 import Question from '../../components/Question';
 import Header from '../../components/Header';
+import Button from '../../components/Button';
 import { sendUserGameInfo } from '../../redux/actions/actions';
 import clearTimer from '../../utils/clearTimer';
 import clock from '../../assets/images/clock.svg';
@@ -115,6 +116,12 @@ class Game extends Component {
         <Header />
 
         <main className="game__container__question__container">
+
+          <div className="game__container__timer__container">
+            <img src={ timer <= dangerTime ? clockDanger : clock } alt="clock icon" />
+            <h1 className={ timer <= dangerTime ? 'danger' : '' }>{ timer }</h1>
+          </div>
+
           { !!questions.length && (
             <Question
               question={ questions[index] }
@@ -125,20 +132,15 @@ class Game extends Component {
             />
           )}
 
-          <div className="game__container__timer__container">
-            <img src={ timer <= dangerTime ? clockDanger : clock } alt="clock icon" />
-            <h1 className={ timer <= dangerTime && 'danger' }>{timer}</h1>
-          </div>
-
           {
             answered && (
-              <button
+              <Button
+                className="game__container__nextAnswerButton"
                 type="button"
+                title="Next"
                 data-testid="btn-next"
                 onClick={ this.increment }
-              >
-                Next
-              </button>
+              />
             )
           }
         </main>

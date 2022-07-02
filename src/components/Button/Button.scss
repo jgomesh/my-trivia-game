@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+button {
+  width: 280px;
+  height: 48px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+
+  &:hover:enabled {
+    background: #fff;
+    color: $black-dark;
+  }
+}
