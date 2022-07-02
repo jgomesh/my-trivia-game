@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import fetchToken from '../../services/fetchToken';
 import isEmailValid from '../../utils/isEmailValid';
 import { sendUserInfo, resetPoints } from '../../redux/actions/actions';
+import Button from '../../components/Button';
 import './Login.scss';
 
 class Login extends React.Component {
@@ -63,23 +64,21 @@ class Login extends React.Component {
             data-testid="input-gravatar-email"
           />
 
-          <button
+          <Button
+            title="PLAY"
             className="login__container__form__btn"
             type="button"
             data-testid="btn-play"
             onClick={ this.handleUserLogin }
             disabled={ !this.isFormValid() }
-          >
-            PLAY
-          </button>
-          <button
+          />
+          {/* <Button
+            title="Settings"
             id="settings_btn"
             type="button"
             data-testid="btn-settings"
             onClick={ this.goToSettings }
-          >
-            Settings
-          </button>
+          /> */}
         </form>
       </main>
     );
