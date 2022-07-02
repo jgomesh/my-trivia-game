@@ -20,7 +20,7 @@ class Ranking extends Component {
   render() {
     const { ranking } = this.state;
     return (
-      <div className="ranking-container">
+      <div className="ranking__container">
         <h1 data-testid="ranking-title">Ranking</h1>
         <div className="ranking">
           {!!ranking.length && (

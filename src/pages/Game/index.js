@@ -138,7 +138,7 @@ class Game extends Component {
                 className="game__container__nextAnswerButton"
                 type="button"
                 title="Next"
-                data-testid="btn-next"
+                testId="btn-next"
                 onClick={ this.increment }
               />
             )

@@ -68,17 +68,17 @@ class Login extends React.Component {
             title="PLAY"
             className="login__container__form__btn"
             type="button"
-            data-testid="btn-play"
+            testId="btn-play"
             onClick={ this.handleUserLogin }
             disabled={ !this.isFormValid() }
           />
-          {/* <Button
+          <Button
             title="Settings"
-            id="settings_btn"
+            className="settings_btn"
             type="button"
-            data-testid="btn-settings"
+            testId="btn-settings"
             onClick={ this.goToSettings }
-          /> */}
+          />
         </form>
       </main>
     );
