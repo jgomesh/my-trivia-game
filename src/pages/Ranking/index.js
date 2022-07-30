@@ -64,7 +64,7 @@ class Ranking extends Component {
           title="Play again"
           type="button"
           data-testid="btn-go-home"
-          onClick={ () => this.redirect('/') }
+          onClick={ () => this.redirect('/my-trivia-game') }
         />
       </div>
     );
