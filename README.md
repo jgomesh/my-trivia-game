@@ -15,9 +15,3 @@ As tecnologias usadas foram:
 - SASS para estilização;
 - Service layer;
 - Padrão BEM para nomenclatura CSS;
-
-- Lucas Ferreira
-- João Hugill
-- Giovanna Morais
-- Carolina Kauark
-- Giovane Saes
