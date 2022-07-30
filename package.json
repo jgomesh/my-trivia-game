@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jgomesh.github.io/my-trivia-game",
   "name": "trivia-react-redux",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +10,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/user-event": "^7.1.2",
     "crypto-js": "^4.1.1",
+    "gh-pages": "^4.0.0",
     "prop-types": "^15.8.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -20,11 +22,14 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "cy": "cypress run",
     "cy:open": "cypress open",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "sass": "node-sass -w sass/ -o dist/css/ --recursive",
     "test:watch": "react-scripts test --watchAll",
     "eject": "react-scripts eject",
     "test-coverage": "react-scripts test --coverage --watchAll=false",
